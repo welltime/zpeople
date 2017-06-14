@@ -35,9 +35,22 @@ function fetchAttendance(params, cookies, modeReport, resBody) {
           throw new Error('Server returned something wrong: ' + JSON.stringify(res.body));
         }
 
-        dataBuffer = dataBuffer.concat(res.body[resBody]);
-
         var len = res.body[resBody].length;
+
+        if (resBody == 'report') {
+          len = 0;
+          var dataBufferTmp = [];
+          for (var name in res.body[resBody]) {
+            if (name != 'erecnoList') {
+              len++;
+              dataBufferTmp.push(res.body[resBody][name]);
+            }
+          }
+          dataBuffer = dataBuffer.concat(dataBufferTmp);
+        } else {
+          dataBuffer = dataBuffer.concat(res.body[resBody]);
+        }
+
         // Received all the data, return from the chain
         if (len < 50) {
           return dataBuffer;
