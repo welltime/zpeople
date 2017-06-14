@@ -111,11 +111,11 @@ function getDataFromZoho(date, modeReport, resBody) {
 
 getDataFromZoho(new Date(), 'customReport', 'report')
   .then(function (data) {
-    fs.writeFileSync('./data/' + moment(new Date()).subtract(1, 'day').format('YYYY-MM-DD') + '.json', JSON.stringify(data, 0, 2));
+    fs.writeFileSync('./data/' + moment(new Date()).format('YYYY-MM-DD') + '.json', JSON.stringify(data, 0, 2));
     return fs.writeFileSync('./data/' + moment(new Date()).subtract(1, 'day').endOf('month').format('YYYY-MM') + '.json', JSON.stringify(data, 0, 2));
   })
   .catch(function (err) {
-    console.error('FAIL. Something went terribly wrong.customReport');
+    console.error('FAIL_1. Something went terribly wrong.');
     console.error(err);
     process.exit(1);
   });
@@ -125,7 +125,7 @@ getDataFromZoho(new Date(), 'monthlyReport', 'dayList')
     return fs.writeFileSync('./data/' + moment(new Date()).subtract(1, 'day').endOf('month').format('YYYY-MM-')+ 'presence' + '.json', JSON.stringify(data, 0, 2));
   })
   .catch(function (err) {
-    console.error('FAIL. Something went terribly wrong.monthlyReport');
+    console.error('FAIL_2. Something went terribly wrong.2');
     console.error(err);
     process.exit(1);
   });
