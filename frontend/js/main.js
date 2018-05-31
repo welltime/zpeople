@@ -189,7 +189,7 @@ jQuery(function ($) {
         {
           "day": oneDayLog.day,
           "overTime": (isPresence(idPeople, iDay) || currentDay === iDay) ? getTime(oneDay.overTime_tsecs) : "0",
-          "devTime": (isPresence(idPeople, iDay) || currentDay === iDay) ? getTime(oneDay.devTime_tsecs) : "0",
+          "devTime": (isPresence(idPeople, iDay) || currentDay === iDay) ? getTime(- +oneDay.devTime_tsecs) : "0",
           "balance": (isPresence(idPeople, iDay) || currentDay === iDay) ? balance(oneDay.overTime_tsecs, oneDay.devTime_tsecs) : "0"
         }
       );
