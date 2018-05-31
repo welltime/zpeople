@@ -201,7 +201,7 @@ jQuery(function ($) {
   function isPresence(idPeople, iDay) {
     return (presenceLog.find(function (emplItem) {
       return emplItem.empId == idPeople + '';
-    })[iDay].isAbsent !== true);
+    })[iDay].dayStatus !== 'A');
   }
 
   function dynamicSort(property) { //sort array obj field
